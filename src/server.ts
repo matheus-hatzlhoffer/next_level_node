@@ -1,5 +1,6 @@
 import express, { request, response } from 'express';
 import './database';
+import { Routes } from './routes';
 
 const app = express();
 
@@ -10,13 +11,7 @@ const app = express();
  * Delete = Deletar
  * Patch = alterar uma informação específica
  */
-
-app.get('/', (request, response) => {
-  return response.send('Hello World');
-});
-
-app.post('/users', (request, response) => {
-  return response.json({ message: 'Usuário salvo com sucesso!!' });
-});
+app.use(express.json());
+app.use(Routes);
 
 app.listen(3333, () => console.log('Server is running in port 3333'));
